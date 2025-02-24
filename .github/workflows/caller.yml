@@ -1,0 +1,13 @@
+name: Caller with Matrix
+
+on:
+  push:
+
+jobs:
+  call-reusable:
+    strategy:
+      matrix:
+        msg: ["Message 1", "Message 2"]
+    uses: ./.github/workflows/reusable.yml
+    with:
+      message: ${{ matrix.msg }}
