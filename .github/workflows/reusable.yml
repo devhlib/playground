@@ -13,4 +13,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Printing message
-        run: echo "Message from caller: ${{ inputs.message }}"
+        run: echo "Message from caller:${{ inputs.message }}"
