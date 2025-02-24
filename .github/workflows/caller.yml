@@ -11,3 +11,10 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with:
       message: ${{ matrix.msg }}
+
+  print-output:
+    needs: call-reusable
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print result
+        run: echo "Output:${{ needs.call-reusable.outputs.result }}"
