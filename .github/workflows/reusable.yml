@@ -11,6 +11,8 @@ on:
 jobs:
   print:
     runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.set-output.outputs.text }}
     steps:
       - name: Printing message
-        run: echo "Message from caller:${{ inputs.message }}"
+        run: echo "Message from caller:${{ inputs.message }}" >> $GITHUB_OUTPUT
