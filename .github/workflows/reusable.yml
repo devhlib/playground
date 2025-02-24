@@ -15,9 +15,13 @@ on:
 jobs:
   print:
     runs-on: ubuntu-latest
-    outputs:
-      result: ${{ steps.set-output.outputs.text }}
     steps:
       - name: Printing message
-        id: print-step
-        run: echo "text=Message from caller:${{ inputs.message }}" >> $GITHUB_OUTPUT
+        run: echo "Message from caller:${{ inputs.message }}"
+      - name: Save output to file
+        run: echo "Message from caller:${{ inputs.message }}" > output.txt
+      - name: Upload output as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: output-${{ github.run_id }}-${{ github.job }}-${{ inputs.message }}
+          path: output.txt
