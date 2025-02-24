@@ -20,4 +20,4 @@ jobs:
     steps:
       - name: Printing message
         id: print-step
-        run: echo "Message from caller:${{ inputs.message }}" >> $GITHUB_OUTPUT
+        run: echo "text=Message from caller:${{ inputs.message }}" >> $GITHUB_OUTPUT
