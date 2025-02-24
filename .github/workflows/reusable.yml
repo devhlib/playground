@@ -7,6 +7,10 @@ on:
         description: 'Message to print'
         required: true
         type: string
+    outputs:
+      result:
+        description: 'The processed message'
+        value: ${{ jobs.print.outputs.result }}
 
 jobs:
   print:
@@ -15,4 +19,5 @@ jobs:
       result: ${{ steps.set-output.outputs.text }}
     steps:
       - name: Printing message
+        id: print-step
         run: echo "Message from caller:${{ inputs.message }}" >> $GITHUB_OUTPUT
