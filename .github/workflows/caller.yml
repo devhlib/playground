@@ -16,5 +16,12 @@ jobs:
     needs: call-reusable
     runs-on: ubuntu-latest
     steps:
-      - name: Print result
-        run: echo "Output:${{ needs.call-reusable.outputs.result }}"
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: Print all outputs
+        run: |
+          for file in artifacts/output-*/*; do
+            echo "Output: $(cat "$file")"
+          done
